@@ -1,0 +1,16 @@
+.nav {
+    background: rgba(66,51,64,0.87);
+    display: grid;
+    grid-template-rows: repeat(6, 5vmax);
+    padding: 2vmax;
+    font-size: 3vmax;
+}
+
+.nav a {
+    color: azure;
+    text-decoration: none;
+}
+
+.nav a.active {
+    color: coral;
+}

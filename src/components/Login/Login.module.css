@@ -1,0 +1,42 @@
+.buttons {
+    display: inline-block;
+}
+
+.formControl {
+    font-size: 30px;
+    padding: 10px;
+    margin: 30px auto;
+}
+
+.formControl input {
+    font-size: 20px;
+    padding: 5px;
+    margin-inside: 50px;
+}
+
+.formControl label {
+    margin-right: 25px;
+    margin-left: 10px;
+}
+
+.error textarea {
+    border: 2px solid mediumvioletred;
+    border-radius: 2px;
+}
+.error input {
+    border: 2px solid mediumvioletred;
+    border-radius: 1px;
+}
+.errorMessage {
+    text-align: center;
+    color: darkred;
+    font-size: 30px;
+    border: 2px solid mediumvioletred;
+    border-radius: 1px;
+}
+
+
+
+.active {
+    background-color: rgba(187, 105, 255, 0.8);
+}

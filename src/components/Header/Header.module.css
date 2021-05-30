@@ -1,0 +1,41 @@
+.header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: rgba(36,23,66,0.87);
+    color: azure;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.loginBlock {
+    padding: 0 15px;
+    float: right;
+    font-weight: bolder;
+    font-family: "Droid Sans Mono Dotted";
+    font-size: 26px;
+}
+
+.loginBlock img {
+    max-width: 100%;
+    width: 60px;
+    padding-top: 8px
+}
+
+.loginBlock a {
+    text-decoration: none;
+    color: wheat;
+    font-size: 32px;
+}
+
+.loginBlock button {
+    background: indianred;
+    opacity: 0.9;
+    border: 1px solid darkblue;
+    border-radius: 3px;
+    color: azure;
+}
+
+.link {
+    bottom: auto;
+}

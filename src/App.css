@@ -1,0 +1,9 @@
+.app-wrapper {
+    display: grid;
+    grid-template-rows: 150px auto;
+    grid-template-columns: 340px auto;
+}
+
+.content-wrapper {
+    background: khaki;
+}
