@@ -11,16 +11,16 @@ const Users = (props) => {
         pages.push(i)
     }
 
-    return <div className={s.users}>
+    return <div>
         {pages.map(p => {
             return <span className={props.currentPage === p && s.selectedPage}
                          onClick={(e) => {
                              props.onPageChanged(p)
                          }}>{p},</span>
         })}
-        {
+        <div className={s.users}>{
             props.users.map(u =>
-                <div key={u.id}>
+                <div key={u.id} className={s.userBlock}>
                     <span>
                         <div>
                             <NavLink to={`/profile/${u.id}`}>
@@ -44,7 +44,7 @@ const Users = (props) => {
                     </span>
                 </div>
             )
-        }
+        }</div>
     </div>
 }
 

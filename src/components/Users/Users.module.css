@@ -1,8 +1,21 @@
- img {
+img {
     max-width: 100%;
     border-radius: 20px;
 }
 
 .selectedPage {
     font-weight: bold;
+}
+
+.users {
+    margin: 5px auto;
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    padding: 10px;
+}
+
+.userBlock {
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
 }

@@ -10,7 +10,7 @@ const Header = (props) => {
             <div className={s.loginBlock}>
                 {props.isAuth
                     ? <div>
-                        <img src={smallPhoto}/>
+                        <img src={smallPhoto} alt='small avatar'/>
                         <div>{props.login}</div>
                         <button onClick={props.logout}>Logout</button>
                     </div>

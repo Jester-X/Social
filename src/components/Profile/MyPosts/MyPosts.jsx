@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import NewPostForm from "./NewPostForm";
 
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
     let posts = props.profilePage.posts.map(p => <Post message={p.message}
                                                        likesCount={p.likesCount}/>);
 
@@ -17,6 +17,6 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+})
 
 export default MyPosts

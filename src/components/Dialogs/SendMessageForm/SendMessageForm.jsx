@@ -1,15 +1,15 @@
 import {Form, Field} from 'react-final-form'
-import {maxLength, required} from "../../../utils/validators";
+import {required} from "../../../utils/validators";
 import React from "react";
 import {Textarea} from "../../common/CustomTags/CustomTags";
 
-let maxLength20 = maxLength(20)
 
 const SendMessageForm = (props) => {
     return <Form onSubmit={props.sendMessage}>
         {({handleSubmit, submitting, pristine}) => (
         <form onSubmit={handleSubmit}>
             <Field component={Textarea}
+                   validate={required}
                    placeholder={'Enter new message..'}
                    name={"newMessageValue"}
             />

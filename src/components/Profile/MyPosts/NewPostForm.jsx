@@ -3,8 +3,6 @@ import {Form, Field} from 'react-final-form'
 import {required} from "../../../utils/validators";
 import s from "../../Login/Login.module.css";
 
-
-
 let NewPostForm = (props) => {
     return (
         <Form onSubmit={(values)=>{

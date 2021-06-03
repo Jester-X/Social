@@ -6,6 +6,21 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 
+const Login = props => {
+    const onSubmit = async values => {
+        await props.login(values.email, values.password, values.rememberMe)
+    }
+
+    if (props.isAuth) return <Redirect to={'/profile'}/>
+
+    return (
+        <div>
+            <h2 style={{textAlign: "center"}}>LOGIN</h2>
+            <LoginForm onSubmit={onSubmit} error={props.error}/>
+        </div>
+    )
+}
+
 const LoginForm = props => {
     return <Form onSubmit={props.onSubmit}
                  subscription={{
@@ -14,7 +29,6 @@ const LoginForm = props => {
                 >
 
         {({
-              submitFailed,
               handleSubmit,
               values,
               form,
@@ -56,7 +70,7 @@ const LoginForm = props => {
                     />Remember Me
                 </div>
                 <div className={s.buttons}>
-                    <button type="submit" disabled={submitting}>Login</button>
+                    <button type="submit" disabled={submitting || pristine}>Login</button>
                     <button
                         type="button"
                         onClick={form.reset}
@@ -70,23 +84,7 @@ const LoginForm = props => {
     </Form>
 }
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-const Login = props => {
-    const onSubmit = async values => {
-        await sleep(500)
-        await props.login(values.email, values.password, values.rememberMe)
-    }
-
-    if (props.isAuth) return <Redirect to={'/profile'}/>
-
-    return (
-        <div>
-            <h2 style={{textAlign: "center"}}>LOGIN</h2>
-            <LoginForm onSubmit={onSubmit} error={props.error}/>
-        </div>
-    )
-}
 let mapStateToProps = state => ({
     isAuth: state.auth.isAuth,
     error: state.auth.error
