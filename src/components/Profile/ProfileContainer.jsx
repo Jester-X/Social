@@ -14,8 +14,10 @@ const ProfileContainer = props => {
         if (!userId) {
             props.history.push('/login')
         }
-        props.getUserProfile(userId)
-        props.getUserStatus(userId)
+        if (userId) {
+            props.getUserProfile(userId)
+            props.getUserStatus(userId)
+        }
     }, [])
 
     return <Profile {...props}

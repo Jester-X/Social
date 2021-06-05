@@ -1,10 +1,11 @@
 import React from "react";
-import {Form, Field} from 'react-final-form'
+import {Form} from 'react-final-form'
 import {required, isValidEmail, minLength, composeValidators} from "../../utils/validators";
 import s from './Login.module.css'
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
+import {createField, Input} from "../common/CustomTags/CustomTags";
 
 const Login = props => {
     const onSubmit = async values => {
@@ -21,56 +22,18 @@ const Login = props => {
     )
 }
 
-const LoginForm = props => {
-    return <Form onSubmit={props.onSubmit}
+const LoginForm = ({onSubmit, error}) => {
+    return <Form onSubmit={onSubmit}
                  subscription={{
                      submitting: true
-                 }}
-                >
-
-        {({
-              handleSubmit,
-              values,
-              form,
-              submitting,
-              pristine
-          }) => (
+                 }}>
+        {({handleSubmit, form, submitting, pristine}) => (
             <form onSubmit={handleSubmit}>
-                <div className={s.formControl}>
-                    <Field name={'email'}
-                           validate={composeValidators(required, isValidEmail)}
-                    >{({input, meta}) =>
-                        (
-                            <div
-                                className={`${meta.active ? s.active : ''} ${meta.touched && meta.error ? s.error : ''}`}>
-                                <label>Email</label>
-                                <input {...input} type={'text'} placeholder={'Email@..'}/>
-                                {meta.touched && meta.error && <span className={s.error}>{meta.error}</span>}
-                            </div>)
-                    }</Field>
-                </div>
-                <div className={s.formControl}>
-
-                    <Field name={'password'}
-                           validate={composeValidators(required, minLength(8))}>
-                        {({input, meta}) => (
-                            <div
-                                className={`${meta.active ? s.active : ''} ${meta.touched && meta.error ? s.error : ''}`}>
-                                <label>Password</label>
-                                <input {...input} type={'password'} placeholder={'Password..'}/>
-                                {meta.touched && meta.error && <span>{meta.error}</span>}
-                            </div>
-                        )}
-                    </Field>
-                </div>
-                <div className={s.formControl}>
-                    <Field type={'checkbox'}
-                           name={'rememberMe'}
-                           component={'input'}
-                    />Remember Me
-                </div>
+                {createField('Email', 'email', composeValidators(required, isValidEmail), Input, 'text')}
+                {createField('Password', 'password', composeValidators(required, minLength(6)), Input, 'password')}
+                {createField(null, 'rememberMe', null, Input, 'checkbox', 'Remember Me')}
                 <div className={s.buttons}>
-                    <button type="submit" disabled={submitting || pristine}>Login</button>
+                    <button type="submit" disabled={submitting}>Login</button>
                     <button
                         type="button"
                         onClick={form.reset}
@@ -78,7 +41,7 @@ const LoginForm = props => {
                     >Reset
                     </button>
                 </div>
-                {props.error ? <div className={s.errorMessage}>{props.error}</div> : ''}
+                {error ? <div className={s.errorMessage}>{error}</div> : ''}
             </form>
         )}
     </Form>

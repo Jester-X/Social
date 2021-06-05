@@ -10,7 +10,7 @@ let initialState = {
     status: '',
     posts: [
         {id: 1, message: 'Im the first user', likesCount: '1'},
-        {id: 2, message: 'Im so alone', likesCount: '0'}
+        {id: 2, message: 'Happy to see you!', likesCount: '0'}
     ],
 }
 
@@ -42,29 +42,23 @@ export const addProfilePost = (newPostValue) => ({type: ADD_PROFILE_POST, newPos
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 
-export const getUserProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getUserProfile(userId)
-            .then(response => {
-                dispatch(setUserProfile(response.data));
-            })
+
+export const getUserProfile = (userId) => async (dispatch) => {
+    let response = await profileAPI.getUserProfile(userId)
+    dispatch(setUserProfile(response.data));
+}
+
+export const getUserStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.getUserStatus(userId)
+    dispatch(setUserStatus(response.data))
+}
+
+export const updateUserStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateUserStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setUserStatus(status))
     }
-}
 
-export const getUserStatus = (userId = 17283) => (dispatch) => {
-    profileAPI.getUserStatus(userId)
-        .then(response => {
-            dispatch(setUserStatus(response.data))
-        })
-}
-
-export const updateUserStatus = (status) => (dispatch) => {
-    profileAPI.updateUserStatus(status)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setUserStatus(status))
-            }
-        })
 }
 
 export default profileReducer;

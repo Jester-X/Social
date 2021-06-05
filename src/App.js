@@ -17,6 +17,7 @@ import Preloader from "./components/common/Preloader/Preloader";
 
 const App = (props) => {
     useEffect(()=> {
+        console.log('initializing')
         props.initializeApp()
     }, [])
 

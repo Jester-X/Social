@@ -3,9 +3,6 @@ img {
     border-radius: 20px;
 }
 
-.selectedPage {
-    font-weight: bold;
-}
 
 .users {
     margin: 5px auto;
@@ -14,7 +11,7 @@ img {
     padding: 10px;
 }
 
-.userBlock {
+.user {
     margin: 5px auto;
     padding: 5px;
     text-align: center;

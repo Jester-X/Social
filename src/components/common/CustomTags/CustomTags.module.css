@@ -1,4 +1,9 @@
-.formControl {
+.formControl textarea{
+    border: 3px solid rgba(11, 52, 34, 0.91);
+    max-width: 15vw;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 5px 10px 5px;
 }
 
 .formControl.error textarea {
@@ -8,4 +13,10 @@
 .formControl.error input {
     border: 1px solid mediumvioletred;
     border-radius: 1px;
+}
+
+.errorMessage {
+    border: 1px solid black;
+    font-size: 25px;
+    color: #a30606;
 }
